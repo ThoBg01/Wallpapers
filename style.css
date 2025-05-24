@@ -3,6 +3,8 @@
   --bg-dark: #121212;
   --text-light: #f8f9fa;
   --accent-hover: #1a73e8;
+  --title-font-family: 'Oswald', sans-serif;
+  --subtitle-font-family: 'Poppins', sans-serif;
 }
 
 * {
@@ -22,6 +24,19 @@ body {
 }
 .navbar-dark .navbar-nav .nav-link:hover {
   color: var(--primary-color);
+}
+
+/* Titolo */
+.title-font {
+  font-family: var(--title-font-family);
+  font-size: 4rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  font-family: var(--subtitle-font-family);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Hero */
@@ -52,6 +67,7 @@ body {
 .wallpaper-card {
   transition: transform 0.3s ease-in-out;
   overflow: hidden;
+  position: relative;
 }
 .wallpaper-card:hover {
   transform: scale(1.03);
@@ -84,18 +100,29 @@ img {
   border-radius: 8px;
 }
 
+/* Responsive Grid per wallpaper 9:16 */
+@media (min-width: 768px) {
+  .wallpaper-card {
+    width: calc(20% - 20px); /* 5 per riga con spazio tra di loro */
+    margin: 10px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .wallpaper-card {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* AdMob */
+.admob-banner {
+  text-align: center;
+  margin: 20px 0;
+}
+
 /* Footer */
 .footer {
   background-color: #1a1a1a;
-}
-
-/* Mobile First */
-@media (max-width: 768px) {
-  .hero {
-    height: 30vh;
-  }
-
-  img {
-    height: 150px;
-  }
 }
