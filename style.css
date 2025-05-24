@@ -1,0 +1,17 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.wallpaper-card {
+  transition: transform 0.2s ease;
+}
+
+.wallpaper-card:hover {
+  transform: scale(1.03);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
