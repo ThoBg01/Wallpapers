@@ -1,17 +1,101 @@
+:root {
+  --primary-color: #0d6efd;
+  --bg-dark: #121212;
+  --text-light: #f8f9fa;
+  --accent-hover: #1a73e8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 body {
-  background-color: #f8f9fa;
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
 }
 
+/* Navbar */
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--text-light);
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  height: 40vh;
+  background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1950&q=80 ');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero-text {
+  z-index: 1;
+  padding: 2rem;
+}
+
+/* Cards */
 .wallpaper-card {
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
 }
-
 .wallpaper-card:hover {
   transform: scale(1.03);
 }
 
+.card-body {
+  display: flex;
+  justify-content: center;
+}
+
+.download-btn {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.download-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 img {
+  object-fit: cover;
+  height: 200px;
   width: 100%;
-  height: auto;
   border-radius: 8px;
+}
+
+/* Footer */
+.footer {
+  background-color: #1a1a1a;
+}
+
+/* Mobile First */
+@media (max-width: 768px) {
+  .hero {
+    height: 30vh;
+  }
+
+  img {
+    height: 150px;
+  }
 }
