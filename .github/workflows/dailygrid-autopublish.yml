@@ -1,4 +1,5 @@
 name: DailyGrid autopublisher
+
 on:
   schedule:
     - cron: '11 4 * * *'
@@ -11,12 +12,22 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: dailygrid-autopublish
+  cancel-in-progress: true
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out only DailyGrid files
         uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            .github
+            scripts
+            docs/dailygrid
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
