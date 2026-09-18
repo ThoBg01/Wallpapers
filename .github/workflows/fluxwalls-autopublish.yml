@@ -1,0 +1,66 @@
+name: FluxWalls autonomous publisher
+
+on:
+  schedule:
+    - cron: '23 3 * * *'
+  push:
+    paths:
+      - 'scripts/fluxwalls_generate.py'
+      - '.github/workflows/fluxwalls-autopublish.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fluxwalls-autopublish
+  cancel-in-progress: true
+
+jobs:
+  generate-publish-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out only FluxWalls files
+        uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            .github
+            scripts
+            docs/fluxwalls
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate today's wallpaper batch
+        run: python scripts/fluxwalls_generate.py
+
+      - name: Validate generated site
+        run: |
+          test -f docs/fluxwalls/index.html
+          test -f docs/fluxwalls/catalog.json
+          test -f docs/fluxwalls/sitemap.xml
+          test -f docs/fluxwalls/indexnow.json
+          test -d docs/fluxwalls/assets
+          test -d docs/fluxwalls/w
+          test "$(find docs/fluxwalls/assets -type f -name '*.svg' | wc -l)" -ge 8
+          grep -q "FluxWalls" docs/fluxwalls/index.html
+          grep -q "Download PNG" docs/fluxwalls/w/*.html
+
+      - name: Commit and push generated batch
+        run: |
+          git config user.name "fluxwalls-autopilot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/fluxwalls
+          if git diff --cached --quiet; then
+            echo "No new FluxWalls content."
+          else
+            git commit -m "FluxWalls automatic daily wallpaper batch"
+            git push
+          fi
+
+      - name: Submit changed URLs with IndexNow
+        run: |
+          curl --fail-with-body --silent --show-error             -X POST             -H "Content-Type: application/json; charset=utf-8"             --data-binary @docs/fluxwalls/indexnow.json             https://api.indexnow.org/indexnow || true
