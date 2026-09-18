@@ -1,0 +1,32 @@
+name: PixelMint health check
+on:
+  push:
+    paths:
+      - 'docs/pixelmint/**'
+      - '.github/workflows/pixelmint-health.yml'
+  schedule:
+    - cron: '17 7 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate autonomous static site
+        run: |
+          test -f docs/pixelmint/index.html
+          test -f docs/pixelmint/privacy.html
+          grep -q "PixelMint Tools" docs/pixelmint/index.html
+          grep -q "Image resizer" docs/pixelmint/index.html
+          grep -q "ca-pub-9886017981009232" docs/pixelmint/index.html
+          python - <<'PY'
+          from pathlib import Path
+          p=Path("docs/pixelmint/index.html")
+          text=p.read_text(encoding="utf-8")
+          required=["imgFile","arCalc","wallGo","palFile","kwGo","fsGo"]
+          missing=[x for x in required if x not in text]
+          if missing: raise SystemExit("Missing tool hooks: "+",".join(missing))
+          print("PixelMint static health check passed.")
+          PY
