@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://thobg01.github.io/Wallpapers/dailygrid/sitemap.xml
