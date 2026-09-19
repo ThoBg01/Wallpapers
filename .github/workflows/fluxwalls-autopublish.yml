@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - 'scripts/fluxwalls_generate.py'
+      - 'scripts/fluxwalls_enrich.py'
       - '.github/workflows/fluxwalls-autopublish.yml'
   workflow_dispatch:
 
@@ -28,15 +29,14 @@ jobs:
             .github
             scripts
             docs/fluxwalls
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Generate today's wallpaper batch
         run: python scripts/fluxwalls_generate.py
-
+      - name: Enrich discovery and internal linking
+        run: python scripts/fluxwalls_enrich.py
       - name: Validate generated site
         run: |
           test -f docs/fluxwalls/index.html
@@ -45,10 +45,12 @@ jobs:
           test -f docs/fluxwalls/indexnow.json
           test -d docs/fluxwalls/assets
           test -d docs/fluxwalls/w
+          test -d docs/fluxwalls/c
           test "$(find docs/fluxwalls/assets -type f -name '*.svg' | wc -l)" -ge 8
+          test "$(find docs/fluxwalls/c -type f -name '*.html' | wc -l)" -ge 3
           grep -q "FluxWalls" docs/fluxwalls/index.html
           grep -q "Download PNG" docs/fluxwalls/w/*.html
-
+          grep -q "fw-related" docs/fluxwalls/w/*.html
       - name: Commit and push generated batch
         run: |
           git config user.name "fluxwalls-autopilot"
@@ -60,7 +62,6 @@ jobs:
             git commit -m "FluxWalls automatic daily wallpaper batch"
             git push
           fi
-
       - name: Submit changed URLs with IndexNow
         run: |
-          curl --fail-with-body --silent --show-error             -X POST             -H "Content-Type: application/json; charset=utf-8"             --data-binary @docs/fluxwalls/indexnow.json             https://api.indexnow.org/indexnow || true
+          curl --fail-with-body --silent --show-error -X POST -H "Content-Type: application/json; charset=utf-8" --data-binary @docs/fluxwalls/indexnow.json https://api.indexnow.org/indexnow || true
