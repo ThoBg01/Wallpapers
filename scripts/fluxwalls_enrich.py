@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, html
+import json, html, re
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'docs'/'fluxwalls'
@@ -31,7 +31,8 @@ def main():
         p=OUT/'w'/f'{e["slug"]}.html'
         if not p.exists(): continue
         text=p.read_text(encoding='utf-8')
-        if 'class="fw-related"' in text: continue
+        # Refresh this block every run so older pages link to newly published wallpapers too.
+        text=re.sub(r'<div class="fw-related">.*?</div>\s*', '', text, count=1, flags=re.S)
         related=[x for x in catalog if x['slug']!=e['slug'] and (x['orientation']==e['orientation'] or x['family']==e['family'])][:6]
         links=''.join(f'<a href="{x["slug"]}.html">{esc(x["title"])}</a> · ' for x in related)
         block=f'<div class="fw-related"><p><strong>Explore similar wallpapers:</strong> {links}<a href="../c/{e["orientation"]}.html">More {esc(e["orientation"])} wallpapers</a></p></div>'
