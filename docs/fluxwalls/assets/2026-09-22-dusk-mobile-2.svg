@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="3200" viewBox="0 0 1440 3200">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#0F1020"/><stop offset="52%" stop-color="#27296D"/><stop offset="100%" stop-color="#0F1020"/>
+      </linearGradient>
+      <radialGradient id="r1"><stop offset="0%" stop-color="#5E63B6" stop-opacity=".95"/><stop offset="100%" stop-color="#5E63B6" stop-opacity="0"/></radialGradient>
+      <radialGradient id="r2"><stop offset="0%" stop-color="#A393EB" stop-opacity=".82"/><stop offset="100%" stop-color="#A393EB" stop-opacity="0"/></radialGradient>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#5E63B6"/><stop offset="1" stop-color="#A393EB"/></linearGradient>
+      <filter id="blur"><feGaussianBlur stdDeviation="84.2"/></filter>
+      <filter id="blur2"><feGaussianBlur stdDeviation="42.7"/></filter>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="855"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+    </defs><rect width="1440" height="3200" fill="url(#bg)"/><path d="M 0 2048 Q 360 1760 720 2048 T 1440 2048 L 1440 3200 L 0 3200 Z" fill="#27296D" opacity="0.22"/><path d="M 0 2256 Q 360 1968 720 2256 T 1440 2256 L 1440 3200 L 0 3200 Z" fill="#5E63B6" opacity="0.30"/><path d="M 0 2464 Q 360 2176 720 2464 T 1440 2464 L 1440 3200 L 0 3200 Z" fill="#0F1020" opacity="0.38"/><path d="M 0 2672 Q 360 2384 720 2672 T 1440 2672 L 1440 3200 L 0 3200 Z" fill="#27296D" opacity="0.46"/><path d="M 0 2880 Q 360 2592 720 2880 T 1440 2880 L 1440 3200 L 0 3200 Z" fill="#5E63B6" opacity="0.54"/><path d="M 0 3088 Q 360 2800 720 3088 T 1440 3088 L 1440 3200 L 0 3200 Z" fill="#0F1020" opacity="0.62"/><circle cx="1037" cy="832" r="158" fill="#A393EB" opacity=".82" filter="url(#blur2)"/><rect width="1440" height="3200" filter="url(#grain)" opacity=".045" style="mix-blend-mode:soft-light"/></svg>
