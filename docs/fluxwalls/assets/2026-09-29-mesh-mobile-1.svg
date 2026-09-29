@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="3200" viewBox="0 0 1440 3200">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#091A1A"/><stop offset="52%" stop-color="#0B525B"/><stop offset="100%" stop-color="#091A1A"/>
+      </linearGradient>
+      <radialGradient id="r1"><stop offset="0%" stop-color="#0B7A75" stop-opacity=".95"/><stop offset="100%" stop-color="#0B7A75" stop-opacity="0"/></radialGradient>
+      <radialGradient id="r2"><stop offset="0%" stop-color="#9CEAEF" stop-opacity=".82"/><stop offset="100%" stop-color="#9CEAEF" stop-opacity="0"/></radialGradient>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#0B7A75"/><stop offset="1" stop-color="#9CEAEF"/></linearGradient>
+      <filter id="blur"><feGaussianBlur stdDeviation="84.2"/></filter>
+      <filter id="blur2"><feGaussianBlur stdDeviation="42.7"/></filter>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="703"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+    </defs><rect width="1440" height="3200" fill="url(#bg)"/><circle cx="899" cy="2849" r="335" fill="url(#r1)" filter="url(#blur2)" opacity=".75"/><circle cx="892" cy="1152" r="280" fill="url(#r2)" filter="url(#blur2)" opacity=".75"/><circle cx="861" cy="303" r="436" fill="url(#r1)" filter="url(#blur2)" opacity=".75"/><circle cx="455" cy="3069" r="216" fill="url(#r2)" filter="url(#blur2)" opacity=".75"/><circle cx="232" cy="2121" r="408" fill="url(#r1)" filter="url(#blur2)" opacity=".75"/><circle cx="518" cy="3092" r="200" fill="url(#r2)" filter="url(#blur2)" opacity=".75"/><circle cx="1177" cy="1863" r="458" fill="url(#r1)" filter="url(#blur2)" opacity=".75"/><circle cx="134" cy="3109" r="378" fill="url(#r2)" filter="url(#blur2)" opacity=".75"/><circle cx="93" cy="3191" r="256" fill="url(#r1)" filter="url(#blur2)" opacity=".75"/><circle cx="1234" cy="3059" r="245" fill="url(#r2)" filter="url(#blur2)" opacity=".75"/><rect width="1440" height="3200" filter="url(#grain)" opacity=".045" style="mix-blend-mode:soft-light"/></svg>
