@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="3200" viewBox="0 0 1440 3200">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#0B0D17"/><stop offset="52%" stop-color="#162447"/><stop offset="100%" stop-color="#0B0D17"/>
+      </linearGradient>
+      <radialGradient id="r1"><stop offset="0%" stop-color="#1F4068" stop-opacity=".95"/><stop offset="100%" stop-color="#1F4068" stop-opacity="0"/></radialGradient>
+      <radialGradient id="r2"><stop offset="0%" stop-color="#E43F5A" stop-opacity=".82"/><stop offset="100%" stop-color="#E43F5A" stop-opacity="0"/></radialGradient>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#1F4068"/><stop offset="1" stop-color="#E43F5A"/></linearGradient>
+      <filter id="blur"><feGaussianBlur stdDeviation="84.2"/></filter>
+      <filter id="blur2"><feGaussianBlur stdDeviation="42.7"/></filter>
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" seed="339"/>
+        <feColorMatrix type="saturate" values="0"/>
+      </filter>
+    </defs><rect width="1440" height="3200" fill="url(#bg)"/><path d="M 0.0 805.1 Q 90.0 805.1 180.0 534.1 Q 270.0 534.1 360.0 415.8 Q 450.0 415.8 540.0 539.6 Q 630.0 539.6 720.0 811.9 Q 810.0 811.9 900.0 1026.6 Q 990.0 1026.6 1080.0 1021.2 Q 1170.0 1021.2 1260.0 799.8 Q 1350.0 799.8 1440.0 530.0" fill="none" stroke="#1F4068" stroke-width="320" stroke-linecap="round" opacity=".32" filter="url(#blur)"/><path d="M 0.0 1703.0 Q 90.0 1703.0 180.0 1714.1 Q 270.0 1714.1 360.0 1503.2 Q 450.0 1503.2 540.0 1229.8 Q 630.0 1229.8 720.0 1100.8 Q 810.0 1100.8 900.0 1213.9 Q 990.0 1213.9 1080.0 1483.4 Q 1170.0 1483.4 1260.0 1705.5 Q 1350.0 1705.5 1440.0 1711.9" fill="none" stroke="#E43F5A" stroke-width="320" stroke-linecap="round" opacity=".32" filter="url(#blur)"/><path d="M 0.0 1638.5 Q 90.0 1638.5 180.0 1433.4 Q 270.0 1433.4 360.0 1453.2 Q 450.0 1453.2 540.0 1683.1 Q 630.0 1683.1 720.0 1949.0 Q 810.0 1949.0 900.0 2049.7 Q 990.0 2049.7 1080.0 1909.0 Q 1170.0 1909.0 1260.0 1633.4 Q 1350.0 1633.4 1440.0 1431.4" fill="none" stroke="#1F4068" stroke-width="320" stroke-linecap="round" opacity=".32" filter="url(#blur)"/><path d="M 0.0 2508.4 Q 90.0 2508.4 180.0 2578.3 Q 270.0 2578.3 360.0 2410.8 Q 450.0 2410.8 540.0 2132.5 Q 630.0 2132.5 720.0 1954.1 Q 810.0 1954.1 900.0 2010.5 Q 990.0 2010.5 1080.0 2259.2 Q 1170.0 2259.2 1260.0 2511.8 Q 1350.0 2511.8 1440.0 2577.2" fill="none" stroke="#E43F5A" stroke-width="320" stroke-linecap="round" opacity=".32" filter="url(#blur)"/><rect width="1440" height="3200" filter="url(#grain)" opacity=".045" style="mix-blend-mode:soft-light"/></svg>
